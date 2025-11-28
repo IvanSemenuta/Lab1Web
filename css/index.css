@@ -34,6 +34,20 @@ body {
     border-radius: 2px;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Збереження пропорцій для фонових зображень */
+.champion-photo img,
+.float-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
 /* ========================================
    ШАПКА САЙТУ
    ======================================== */
@@ -180,6 +194,7 @@ section[id="contact-form"] {
     gap: 40px;
     align-items: start;
     margin-bottom: 40px;
+    text-align: justify;
 }
 
 .champion-photo {
@@ -240,6 +255,7 @@ section[id="contact-form"] {
     width: 450px;
     position: relative;
     margin: 0 auto 250px auto;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
 .gallery h2 {margin: 0 0 0 0;}
@@ -250,7 +266,7 @@ section[id="contact-form"] {
     width: 100%;
     position: absolute;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-}  
+}
 
 .img1 {
     top: 15px;
@@ -442,7 +458,7 @@ section[id="contact-form"] {
     padding: 12px 15px;
     border: 2px solid #ddd;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 1rem; /* 1rem = 16px*/
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     background: white;
 }
@@ -737,16 +753,135 @@ section[id="contact-form"] {
    МЕДІА ЗАПИТИ
    ======================================== */
 
-@media (max-width: 768px) {
-    .boxer-section {
+/* Мобільні пристрої (до 480px) */
+
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 1.5em;
+        letter-spacing: 1px;
+    }
+    
+    .champion-photo{
+        width: 100%;
+        flex: 0 0 300px;
+        float: none;
+        margin-top: 30px ;
+    }
+
+    .boxer-section{
+        gap: 15px;
         flex-direction: column;
+    }
+    
+    .tagline {
+        font-size: 1em;
+    }
+    
+    .nav-link {
+        padding: 12px 15px;
+        font-size: 0.9em;
+    }
+    
+    .main-content {
+        padding: 10px;
+        margin: 15px auto;
+    }
+    
+    .float-image {
+        float: none;
+        width: 100%;
+        margin: 20px 0;
+    }
+    
+    .timeline-table {
+        font-size: 0.85em;
+    }
+    
+    .timeline-table th,
+    .timeline-table td {
+        padding: 8px;
+    }
+    
+    .form-container {
+        padding: 10px;
+    }
+
+    .forms-section {
+        gap: 15px;
+    }
+    
+    .achievements-grid {
+        gap: 10px;
+    }
+
+    .achievement-column {
+        padding: 10px;
+    }
+
+
+    .gallery {
+        height: 120px;
+        width: 180px;
+        margin-bottom: 180px;
+    }
+
+    .img1 {
+        top: 15px;
+        right: 85px;
+    }
+
+    .img2 {
+        top: 15px;
+        left: 85px;
+    }
+
+    .img3 {
+        top: 115px;
+    }
+
+    /* Контакти */
+
+    .float-form{
+        margin-top: 30px;
+        margin-bottom: 30px;
+        margin-left: 0px;
+    }
+
+    .forms-section {
+    grid-template-columns: 1fr;
+    }
+
+    .social-links{
+        gap: 5px;
+        justify-content: center;
+    } 
+
+    .social-link{
+        padding: 6px 12px;
+    }
+
+    .contact-info{
+        padding: 15px;
+        text-align: center;
+    }
+
+}
+
+/* Планшети (481px - 768px) */
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .main-title {
+        font-size: 2.2em;
     }
     
     .champion-photo {
         flex: none;
         width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
     }
-    
+
+    .boxer-section,
     .achievements-grid {
         flex-direction: column;
     }
@@ -761,11 +896,76 @@ section[id="contact-form"] {
         margin-left: 0;
     }
     
-    .main-title {
-        font-size: 2em;
+    .gallery {
+        height: 250px;
+        width: 350px;
+        margin-bottom: 230px;
+    }
+
+    .img1 {
+        top: 15px;
+        right: 85px;
+    }
+
+    .img2 {
+        top: 15px;
+        left: 85px;
+    }
+
+    .img3 {
+        top: 115px;
+    }
+
+}
+
+/* Desktop (769px і більше) */
+
+@media (min-width: 769px) {
+    .nav-list {
+        justify-content: center;
     }
     
-    .nav-list {
-        flex-direction: column;
+    .boxer-section {
+        flex-direction: row;
+    }
+    
+    .achievements-grid {
+        flex-direction: row;
+    }
+    
+    .forms-section {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .gallery {
+        height: 250px;
+        width: 400px;
+        margin-bottom: 230px;
+    }
+
+    .img1 {
+        top: 15px;
+        right: 150px;
+    }
+
+    .img2 {
+        top: 15px;
+        left: 150px;
+    }
+
+}
+
+/* Великі екрани (1200px+) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1400px;
+    }
+    
+    .main-content {
+        padding: 50px;
+    }
+    
+    .champion-photo {
+        flex: 0 0 450px;
     }
 }
